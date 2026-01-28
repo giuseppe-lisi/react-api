@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import ActorCard from "./ActorCard";
 import axios from "axios";
 
 function App() {
@@ -12,28 +13,15 @@ function App() {
     }, []);
 
     console.log(actorList);
-    
 
     return (
         <>
             <div>Lista di attori</div>
             <ul>
                 {actorList.map((actor, i) => {
-                    return (
-                        <li key={i}>
-                            <ul>
-                                <img src={actor.image} />
-                                <li>{actor.name}</li>
-                                <li>{actor.birth_year}</li>
-                                <li>{actor.nationality}</li>
-                                <li>{actor.biography}</li>
-                                <li>{actor.awards}</li>
-                            </ul>
-                        </li>
-                    );
+                    return <ActorCard actor={actor} key={i} />;
                 })}
             </ul>
-            <button>Stampa attori</button>
         </>
     );
 }
