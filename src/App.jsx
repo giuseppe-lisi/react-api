@@ -14,14 +14,13 @@ function App() {
 
         Promise.all([women, men])
             .then(([resWomen, resMen]) => {
-                setActorList([...resWomen.data, ...resMen.data]);
+                const fixedResMen = resMen.data.map((actor) => {
+                    return { ...actor, id: `${actor.id + 100}` };
+                });
+                setActorList([...resWomen.data, ...fixedResMen]);
             })
             .catch((err) => console.log(`Incontrato un errore: ${err}`));
     }, []);
-
-    useEffect(() => {
-        console.log(actorList);
-    }, [actorList]);
 
     return (
         <>
