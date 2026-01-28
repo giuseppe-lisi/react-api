@@ -1,6 +1,6 @@
 function ActorCard({ actor }) {
     return (
-        <li key={actor.id} className="card">
+        <li className="card">
             <div>
                 <div className="cardImage">
                     <img src={actor.image} alt={`Foto di ${actor.name}`} />

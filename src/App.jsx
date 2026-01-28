@@ -6,30 +6,29 @@ function App() {
     const apiUrlWomen = "https://lanciweb.github.io/demo/api/actresses/";
     const apiUrlMen = "https://lanciweb.github.io/demo/api/actors/";
 
-    const [womenActorList, setWomenActorList] = useState([]);
-    const [menActorList, setMenActorList] = useState([]);
+    const [actorList, setActorList] = useState([]);
 
     useEffect(() => {
-        axios.get(apiUrlWomen).then((res) => {
-            setWomenActorList(res.data);
-        });
+        const women = axios.get(apiUrlWomen);
+        const men = axios.get(apiUrlMen);
+
+        Promise.all([women, men])
+            .then(([resWomen, resMen]) => {
+                setActorList([...resWomen.data, ...resMen.data]);
+            })
+            .catch((err) => console.log(`Incontrato un errore: ${err}`));
     }, []);
 
     useEffect(() => {
-        axios.get(apiUrlMen).then((res) => {
-            setMenActorList(res.data);
-        });
-    }, []);
+        console.log(actorList);
+    }, [actorList]);
 
     return (
         <>
             <div>Lista di attori</div>
             <ul className="cardContainer">
-                {womenActorList.map((actor, i) => {
-                    return <ActorCard actor={actor} />;
-                })}
-                {menActorList.map((actor, i) => {
-                    return <ActorCard actor={actor} />;
+                {actorList.map((actor) => {
+                    return <ActorCard actor={actor} key={actor.id} />;
                 })}
             </ul>
         </>
