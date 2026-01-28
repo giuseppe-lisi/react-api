@@ -10,11 +10,29 @@ function App() {
             setActorList(res.data);
         });
     }, []);
+
+    console.log(actorList);
     
+
     return (
         <>
             <div>Lista di attori</div>
-            <ul></ul>
+            <ul>
+                {actorList.map((actor, i) => {
+                    return (
+                        <li key={i}>
+                            <ul>
+                                <img src={actor.image} />
+                                <li>{actor.name}</li>
+                                <li>{actor.birth_year}</li>
+                                <li>{actor.nationality}</li>
+                                <li>{actor.biography}</li>
+                                <li>{actor.awards}</li>
+                            </ul>
+                        </li>
+                    );
+                })}
+            </ul>
             <button>Stampa attori</button>
         </>
     );
