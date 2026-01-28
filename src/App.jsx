@@ -1,11 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
     const apiUrl = "https://lanciweb.github.io/demo/api/actresses/";
+    const [actorList, setActorList] = useState([]);
+
+    useEffect(() => {
+        console.log(actorList);
+    }, [actorList])
 
     const printActors = () => {
-        axios.get(apiUrl).then((res) => console.log(res.data));
+        axios.get(apiUrl).then((res) => {
+            setActorList(res.data)
+        });
     };
 
     return (
