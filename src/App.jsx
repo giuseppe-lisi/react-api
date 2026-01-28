@@ -6,20 +6,16 @@ function App() {
     const [actorList, setActorList] = useState([]);
 
     useEffect(() => {
-        console.log(actorList);
-    }, [actorList])
-
-    const printActors = () => {
         axios.get(apiUrl).then((res) => {
-            setActorList(res.data)
+            setActorList(res.data);
         });
-    };
-
+    }, []);
+    
     return (
         <>
             <div>Lista di attori</div>
             <ul></ul>
-            <button onClick={printActors}>Stampa attori</button>
+            <button>Stampa attori</button>
         </>
     );
 }
