@@ -19,7 +19,7 @@ function App() {
             <div>Lista di attori</div>
             <ul>
                 {actorList.map((actor, i) => {
-                    return <ActorCard actor={actor} key={i} />;
+                    return <ActorCard actor={actor}/>;
                 })}
             </ul>
         </>
