@@ -3,4 +3,36 @@
     padding: 0%;
     box-sizing: border-box;
     font-family: sans-serif;
+    line-height: 20px;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+}
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 90%;
+    gap: 10px;
+    margin: auto;
+}
+
+.card {
+    width: 20%;
+    padding: 20px;
+    background-color: bisque;
+    border-radius: 3%;
+}
+
+.cardImage {
+    height: 230px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 3%;
 }

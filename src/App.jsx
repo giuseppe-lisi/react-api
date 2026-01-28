@@ -17,7 +17,7 @@ function App() {
     return (
         <>
             <div>Lista di attori</div>
-            <ul>
+            <ul className="cardContainer">
                 {actorList.map((actor, i) => {
                     return <ActorCard actor={actor}/>;
                 })}
